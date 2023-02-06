@@ -20,6 +20,7 @@ int main() {
             for (int k = 0; k < n; k++) {s += to_string(a[k]) + ' ';}
             res.push_back(s);
 		}
+        else break;
     }
     for (int i = res.size() - 1; i >= 0; i--) 
         cout << res[i] << endl;
