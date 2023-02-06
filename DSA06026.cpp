@@ -12,11 +12,12 @@ int main() {
 				swap(a[j], a[j + 1]);
 			}
 		}
-		if (flag == 1) {
+		if (flag) {
 			cout << "Buoc " << i + 1 << ": ";
 			for (int x : a) cout << x << ' ';
 			cout << endl;
 		}
+		else break;
 	}
 	return 0;
 }
