@@ -16,8 +16,9 @@ int main() {
                 break;
             }
         }
-        if (!res) cout << "NO\n";
-        else cout << res << endl;
+        if (!res) cout << "NO";
+        else cout << res;
+        cout << endl;
 	}
 	return 0;
 }
