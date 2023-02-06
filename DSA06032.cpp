@@ -13,8 +13,7 @@ int main() {
             for (int j = i + 1; j < n; j++) {
                 auto it = upper_bound(a + j + 1, a + n, k - a[i] - a[j] - 1);
                 int pos = it - a;
-                if (pos > j) res += pos - j - 1;
-                else break;
+                res += pos - j - 1;
             }
         }
         cout << res << endl;
