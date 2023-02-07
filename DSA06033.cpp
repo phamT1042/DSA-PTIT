@@ -14,18 +14,13 @@ int main() {
         }
         sort(a.begin(), a.end(), cmp);
         int res = INT_MIN;
-        queue<int> q;
-        for (int i = 0; i < n; i++) {
-            if (q.empty()) q.push(a[i].second);
+        int minPos = a[0].second;
+        for (int i = 1; i < n; i++) {
+            if (a[i].second < minPos) {
+                minPos = a[i].second;
+            }
             else {
-                int front = q.front();
-                if (a[i].second < front) {
-                    q.pop();
-                    q.push(a[i].second);
-                }
-                else {
-                    res = max(res, a[i].second - front);
-                }
+                res = max(res, a[i].second - minPos);
             }
         }
         if (res == INT_MIN) cout << "-1\n";
