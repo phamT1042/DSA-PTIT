@@ -7,7 +7,8 @@ bool cmp (int a, int b) {
 int main() {
     int t; cin >> t;
     while (t--) {
-        int n; cin >> n >> x;
+        int n; 
+        cin >> n >> x;
         int a[n];
         for (int &x : a) cin >> x;
         stable_sort(a, a + n, cmp);
