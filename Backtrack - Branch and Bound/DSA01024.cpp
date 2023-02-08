@@ -17,7 +17,8 @@ void Try (int i) {
     }
 }
 int main() {
-    int n; cin >> n >> k;
+    int n; 
+    cin >> n >> k;
     set<string> nameIN;
     while (n--) {
         string s; cin >> s;
