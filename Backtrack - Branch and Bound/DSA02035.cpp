@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-//Hoán vị theo cột các số
+//Hoán vị theo cột các chữ số của n số
 int k, sh[9], res = INT_MAX;
 vector<string> a;
 bool used[9];
