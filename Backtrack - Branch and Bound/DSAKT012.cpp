@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-int chon[40], S, k, t[40], n, sum, res = 40;
+int chon[40], S, t[40], n, sum, res = 40;
 //chon[i]: chon[i] = j tức chọn tờ tiền tại vị trí j của mảng t (j = 1, n)
-//k: số tờ tiền chọn từ cách chon[] nào đấy
 //res: số tờ tiền ít nhất cần tìm
 void Try (int k) {
     if (sum == S) {
@@ -24,7 +23,8 @@ int main() {
         chon[i] = 0;
     }
     sort(t + 1, t + n + 1, greater<int>());
-    sum = 0; k = 1; 
+    int k = 1; //k: số tờ tiền chọn từ cách chon[] nào đấy
+    sum = 0;
     Try(k);
     if (res != 40) cout << res;
     else cout << "-1";
