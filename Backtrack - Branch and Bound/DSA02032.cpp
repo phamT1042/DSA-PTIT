@@ -19,13 +19,11 @@ void Try () {
     else if (sum > x) return;
     for (int j = 0; j < n; j++) {
         if (a[j] >= chon[k - 1]) {
-            if (sum < x) {
-                sum += a[j];
-                chon[k++] = a[j];
-                Try();
-                k--;
-                sum -= a[j];
-            }
+            sum += a[j];
+            chon[k++] = a[j];
+            Try();
+            k--;
+            sum -= a[j];
         }
     }
 }
