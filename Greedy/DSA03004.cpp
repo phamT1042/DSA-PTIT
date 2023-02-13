@@ -9,7 +9,7 @@ int main() {
         sort(a, a + n);
         string s1 = "", s2 = "";
         for (int i = 0; i < n; i++) {
-            if (i % 2 == 0) s1 += to_string(a[i]);
+            if (i % 2) s1 += to_string(a[i]);
             else s2 += to_string(a[i]);
         }
         cout << stoll(s1) + stoll(s2) << endl;
