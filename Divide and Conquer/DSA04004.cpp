@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n;
-long long k;
 long long a[51];
 int Try(int n, long long k) {
     if (k == a[n] / 2 + 1) return n;
@@ -13,6 +11,7 @@ int main() {
     for (int i = 2; i <= 50; i++) a[i] = a[i - 1] * 2 + 1; 
     int t; cin >> t;
     while (t--) {
+        int n; long long k;
         cin >> n >> k;
         cout << Try(n, k) << endl;
     }
