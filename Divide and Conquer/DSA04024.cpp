@@ -36,7 +36,7 @@ void result(vector<long long> a[], int k, int n) {
         sum += x[n - 1];
         sum %= MOD;
     }
-    cout << sum << endl;
+    cout << sum << "\n";
 }
 int main() {
     int t; cin >> t;
