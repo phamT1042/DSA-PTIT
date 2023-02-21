@@ -5,7 +5,7 @@ int main() {
     while (t--) {
         int n, v, i, j; cin >> n >> v;
         int a[n + 1], c[n + 1], dp[n + 1][v + 1]; //Giá trị lớn nhất túi khi 
-                                    //chọn đồ vật thứ 1,2,3,..,i với thể tích tối đa j
+                                    //chọn trong i đồ vật từ 1 đến i với thể tích tối đa j
         for (i = 1; i <= n; i++) {
             cin >> a[i];
         }
