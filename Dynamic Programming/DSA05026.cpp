@@ -9,8 +9,8 @@ int main() {
         for (int j = 0; j <= c; j++) {
             if (i == 0 || j == 0) dp[i][j] = 0;
             else {
-                dp[i][j] = dp[i - 1][j];
-                if (j >= w[i]) {
+                dp[i][j] = dp[i - 1][j]; //chưa chọn con bò thứ i
+                if (j >= w[i]) { //nếu con bò thứ i chọn được
                     dp[i][j] = max(dp[i][j], dp[i - 1][j - w[i]] + w[i]);
                 }
             }
