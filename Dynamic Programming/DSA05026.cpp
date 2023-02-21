@@ -2,7 +2,7 @@
 using namespace std;
 int main() {
     int c, n; cin >> c >> n;
-    int w[n + 1], dp[n + 1][c + 1]; //Khối lượng bò lớn nhất nếu chọn ra trong 1,2,...,i con bò 
+    int w[n + 1], dp[n + 1][c + 1]; //Tổng Khối lượng bò lớn nhất nếu chọn trong i con bò từ 1 đến i
                                     //với trọng lượng tối đa j
     for (int i = 1; i <= n; i++) cin >> w[i];
     for (int i = 0; i <= n; i++) {
