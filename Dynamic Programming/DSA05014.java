@@ -15,6 +15,7 @@ public class DSA05014 {
                 }
             }
             System.out.println(C[n]);
-        } 
+        }
+        sc.close(); 
     }
 }
