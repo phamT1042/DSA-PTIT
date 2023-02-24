@@ -32,5 +32,6 @@ public class DSA05015 {
                 System.out.println(res);
             }
         }
+        sc.close();
     }
 }
