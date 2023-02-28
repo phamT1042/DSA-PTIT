@@ -14,7 +14,7 @@ int main() {
         sort(item.begin(), item.end(), cmp);
         double res = 0;
         int i = 0;
-        while (w - item[i].second > 0 && i < n) {
+        while (w - item[i].second >= 0 && i < n) {
             res += item[i].first;
             w -= item[i].second;
             i++;
