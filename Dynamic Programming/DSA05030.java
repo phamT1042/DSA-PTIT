@@ -6,7 +6,7 @@ public class DSA05030 {
 		while (t-- > 0) {
         	int n = sc.nextInt();
 			int m = sc.nextInt(); 
-		    long[][] dp = new long[n + 1][m + 1];
+		    long dp[][] = new long[n + 1][m + 1];
 			for (int i = 0; i <= n; i++)
             	for (int j = 0; j <= m; j++) 
                 	dp[i][j] = 1;
