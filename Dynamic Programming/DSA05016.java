@@ -20,5 +20,6 @@ public class DSA05016 {
 			int n = sc.nextInt();
 			System.out.println(dp[n]);
 		}
+		sc.close();
 	}
 }
