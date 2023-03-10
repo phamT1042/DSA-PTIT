@@ -1,16 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-vector<string> tachBT (string s) {
+vector<string> tachBT (string s1, string s2) {
     vector<string> a;
-    stringstream ss(s);
+    stringstream ss(s1);
     string tmp;
-    while (getline(ss, tmp, '+')) {
-        a.push_back(tmp);
-    }
+    while (getline(ss, tmp, ' ')) a.push_back(tmp);
+    stringstream ss1(s2);
+    while (getline(ss1, tmp, ' ')) a.push_back(tmp);
     return a;
 }
-int heSo[10001];
 int main() {
     int t; cin >> t;
     cin.ignore();
@@ -18,21 +16,27 @@ int main() {
         string s1, s2;
         getline(cin, s1);
         getline(cin, s2);
-        vector<string> soHang1, soHang2;
-        soHang1 = tachBT(s1);
-        soHang2 = tachBT(s2);
-        int maxMu = 0;
-        memset(heSo, 0, sizeof(heSo));
-        for (string x : soHang1) {
-            int i = 1;
-            for (i; i < x.length(); i++) {
-                if (x[i] == '*') break;
-            } 
-            heSo[x[x.length() - 1] - '0'] += stoi(x.substr(0, i));
-            if (x[x.length() - 1] - '0' > maxMu) maxMu = x[x.length() - 1] - '0';
+        vector<string> tongDaThuc;
+        tongDaThuc = tachBT(s1, s2);
+        map<int, int, greater<int>> soHang;
+        for (string x : tongDaThuc) {
+            if (x[0] == '+') continue;
+            int heSo, bac;
+            for (int i = 1; i < x.length(); i++) {
+                if (x[i] == '*') heSo = stoi(x.substr(0, i));
+                if (x[i] == '^') {
+                    bac = stoi(x.substr(i + 1, x.length() - i - 1));
+                    break;
+                }
+            }
+            soHang[bac] += heSo;
         }
-        for (int i = maxMu; i >= 0; i--) {
-            if (heSo[i] > 0) cout << heSo[i] << "*x^" << i << " + ";
+        int n = soHang.size(), i = 0;
+        for (auto it : soHang) {
+            cout << it.second << "*x^" << it.first;
+            i++;
+            if (i < n) cout << " + ";
+            else cout << "\n";
         }
     }
 }
