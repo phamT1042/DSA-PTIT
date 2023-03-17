@@ -15,18 +15,20 @@ int solve(string s, string t) {
     set<string> check;
     q.push({s, 0});
     check.insert(s);
+    int j;
     while (!q.empty()) {
         auto tmp = q.front(); q.pop();
         string s1 = tmp.first;
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (i == 0 && j == 0) continue;
-                if (s1[i] != j - '0') {
-                    string testStr = s1.substr(0, i) + s1[i];
+            if (i == 0) j = 1;
+            else j = 0;
+            for (j; j < 10; j++) {
+                if (s1[i] - '0' != j) {
+                    string testStr = s1.substr(0, i) + to_string(j);
                     if (i < 3) testStr += s1.substr(i + 1, 3 - i);
                     if (testStr == t) return tmp.second + 1;
                     else {
-                        if (sang[stoi(testStr)]) {
+                        if (sang[stoi(testStr)] && check.find(testStr) == check.end()) {
                             check.insert(testStr);
                             q.push({testStr, tmp.second + 1});
                         }
@@ -43,9 +45,7 @@ int main() {
     while (t--) {
         string s, t; cin >> s >> t;
         if (s == t) cout << 0;
-        else {
-            cout << solve(s, t);
-        }
+        else cout << solve(s, t);
         cout << "\n";
     }
     return 0;
