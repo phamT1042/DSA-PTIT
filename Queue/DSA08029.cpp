@@ -10,13 +10,6 @@ class Matrix {
                     in >> x.a[i][j];
             return in;
         }
-        friend ostream &operator << (ostream &out, Matrix x) {
-            for (int i = 0; i < 2; i++) 
-                for (int j = 0; j < 3; j++)
-                    out << x.a[i][j] << ' ';
-                out << endl;
-            return out;
-        }
         friend bool operator == (Matrix x, Matrix y) {
             for (int i = 0; i < 2; i++) 
                 for (int j = 0; j < 3; j++)
