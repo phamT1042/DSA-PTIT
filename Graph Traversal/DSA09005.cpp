@@ -16,7 +16,6 @@ void BFS (int u) {
             }
         }
     }
-    
 }
 int main() {
     int t; cin >> t;
