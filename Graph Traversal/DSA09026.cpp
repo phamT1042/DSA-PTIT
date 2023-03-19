@@ -24,8 +24,8 @@ void BFS (int s, int t) {
     }
 }
 int main() {
-    int t; cin >> t;
-    while (t--) {
+    int T; cin >> T;
+    while (T--) {
         flag = 0;
         int v, e, s, t, x, y; cin >> v >> e >> s >> t;
         while (e--) {
