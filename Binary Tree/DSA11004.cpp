@@ -20,7 +20,7 @@ Node *search (Node *root, int u) {
             tmp = search(root->right, u);
     return tmp;
 }
-void levelTree (Node *root) {
+void levelOrder (Node *root) {
     queue<Node*> q;
     q.push(root);
     while (q.size()) {
