@@ -5,9 +5,7 @@ int v, e;
 struct edge {
     int x, y, w;
     edge (int a, int b, int c) {
-        x = a;
-        y = b;
-        w = c;
+        x = a; y = b; w = c;
     }
 };
 vector<edge> dsCanh;
