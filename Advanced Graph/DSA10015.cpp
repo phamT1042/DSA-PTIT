@@ -34,7 +34,6 @@ void input() {
     for (int i = 0; i < e; i++) {
         cin >> x >> y >> z;
         dsCanh.push_back(edge(x, y, z));
-        dsCanh.push_back(edge(y, x, z));
     }
 }
 int Kruskal() {
