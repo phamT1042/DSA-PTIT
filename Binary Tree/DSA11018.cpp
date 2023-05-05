@@ -17,11 +17,11 @@ void addNode (Node *&root, int x) {
     if (root->data < x) addNode(root->right, x);
     else addNode(root->left, x);
 }
-void NLR (Node *root) {
+void LRN (Node *root) {
     if (root != NULL) {
         cout << root->data << ' ';
-        NLR(root->left);
-        NLR(root->right);
+        LRN(root->left);
+        LRN(root->right);
     }
 }
 int main () {
@@ -33,6 +33,6 @@ int main () {
             cin >> x;
             addNode(root, x);
         }
-        NLR(root); cout << '\n';
+        LRN(root); cout << '\n';
     }
 }
