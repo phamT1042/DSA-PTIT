@@ -5,9 +5,9 @@ using namespace std;
 //|0 1 0 0|   |T(N-1)|   |T(N)  |   |0 1 0 0|         |T(1)|
 //|0 0 1 0|   |T(N-2)|   |T(N-1)|   |0 0 1 0|         |T(0)|
 long long MOD = 1e15 + 7;
-long long binMul(long long a, long long b) {
+long long nhanHaiSo(long long a, long long b) {
     if(b == 0) return 0;
-    long long res = binMul(a, b / 2) % MOD;
+    long long res = nhanHaiSo(a, b / 2) % MOD;
     res += res; res %= MOD;
     if(b % 2) {
         res += a; res %= MOD;
@@ -20,7 +20,7 @@ void nhanMT (long long a[4][4], long long b[4][4]) {
         for (int j = 0; j < 4; j++) {
             res[i][j] = 0;
             for (int k = 0; k < 4; k++) {
-                res[i][j] += binMul(a[i][k], b[k][j]) % MOD;
+                res[i][j] += nhanHaiSo(a[i][k], b[k][j]) % MOD;
                 res[i][j] %= MOD;
             }
         }
