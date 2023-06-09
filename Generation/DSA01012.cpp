@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, bit[11], gray[11];
+int n, bit[11];
 void result() {
-    for (int i = 1; i < n; i++) {
-        if (bit[i] != bit[i - 1]) gray[i] = 1;
-        else gray[i] = 0;
-    }
-    gray[0] = bit[0];
-    for (int i = 0; i < n; i++) cout << gray[i];
+    cout << bit[0];
+    for (int i = 1; i < n; i++)
+        if (bit[i] != bit[i - 1]) cout << 1;
+        else cout << 0;
     cout << ' ';
 }
 void Try(int i) {
@@ -22,7 +20,7 @@ int main() {
     while (t--) {
         cin >> n;
         Try(0);
-        cout << endl;
+        cout << '\n';
     }
     return 0;
 }
