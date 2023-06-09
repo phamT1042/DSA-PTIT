@@ -1,18 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, a[11];
+int n;
+char a[11];
 void result() {
-    for (int i = 0; i < n; i++) {
-        if (a[i]) cout << "B";
-        else cout << "A";
-    }
-    cout << " ";
+    for (int i = 0; i < n; i++) cout << a[i];
+    cout << ' ';
 }
 void Try (int i) {
-    for (int j = 0; j <= 1; j++) {
+    for (char j = 'A'; j <= 'B'; j++) {
         a[i] = j;
-        if (i == n - 1) result ();
-        else Try (i + 1);
+        if (i == n - 1) result();
+        else Try(i + 1);
     }
 }
 int main() {
@@ -20,7 +18,7 @@ int main() {
     while (t--) {
         cin >> n;
         Try(0);
-        cout << endl;
+        cout << '\n';
     }
     return 0;
 }
