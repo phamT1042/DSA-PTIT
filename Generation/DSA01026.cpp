@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 int n, flag = 0;
-string x = "";
+string x = "8";
 bool check (string x) {
     if (x[n - 1] == '8') return false;
     if (x.find("88") != string::npos || x.find("6666") != string::npos) return false;
@@ -14,17 +14,12 @@ void sinh () {
         flag = 1;
         return;
     }
-    else {
-        x[i] = '8';
-        if (check(x)) {
-            cout << x << endl;
-        }
-    }
+    x[i] = '8';
+    if (check(x)) cout << x << '\n';
 }
 int main() {
     cin >> n;
-    x += "8";
     for (int i = 1; i < n; i++) x += "6";
-    while (!flag) {sinh();}
+    while (!flag) sinh();
     return 0;
 }
