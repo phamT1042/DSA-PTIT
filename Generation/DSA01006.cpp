@@ -1,31 +1,33 @@
 #include<bits/stdc++.h>
 using namespace std;
-int a[11], n;
-int used[11];
-void result() {
+int flag, a[11];
+void hvNguoc(int n) {
+    int i = n - 1;
+    while (a[i] < a[i + 1]) i--;
+    if (!i) {
+        flag = 1; return;
+    }
+    int k = n;
+    while (a[i] < a[k]) k--;
+    swap(a[i], a[k]);
+    int l = i + 1, r = n;
+    while (l < r) swap(a[l++], a[r--]);
     for (int i = 1; i <= n; i++) cout << a[i];
     cout << ' ';
 }
-void Try (int i) {
-    for (int j = n; j >= 1; j--) {
-        if (used[j] == 0) {
-            a[i] = j;
-            used[j] = 1;
-            if (i == n) result();
-            else 
-                Try (i + 1);
-            used[j] = 0;
-        }
-    }
-}
 int main () {
     int t; cin >> t;
+    a[0] = 11;
     while (t--) {
-        memset(a, 0, sizeof(a));
-        memset(used, 0, sizeof(used));
-        cin >> n;
-        Try(1);
-        cout << endl;
+        int n; cin >> n;
+        flag = 0;
+        for (int i = 1; i <= n; i++) {
+            a[i] = n + 1 - i;
+            cout << a[i];
+        }
+        cout << ' ';
+        while (!flag) hvNguoc(n);
+        cout << '\n';
     }
     return 0;
 }
