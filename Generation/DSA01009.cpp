@@ -5,11 +5,9 @@ vector<string> res;
 void result(int s[], int n, int k) {
     int cntA = 0, cntAmax = 0;
     for (int i = 0; i < n; i++) {
-        if (s[i] == 0) {
-            cntA++;
-        }
+        while (!s[i]) {cntA++; i++;}
         cntAmax = max(cntA, cntAmax);
-        if (s[i] == 1) cntA = 0;
+        cntA = 0;        
     }
     if (cntAmax != k) return;
     string tmp = "";
