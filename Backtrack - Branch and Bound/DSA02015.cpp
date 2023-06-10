@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 bool check (string s) {
-    if (s == "") return false;  //rỗng
-    if (s.length() == 1 && s[0] != '(' && s[0] != ')') return false; //chỉ 1 kí tự và nó không phải ngoặc
+    if (s.length() < 2) return false;
     int cnt = 0;
     for (char x : s) {
         if (x == '(') cnt++;
@@ -19,11 +18,11 @@ int main() {
         map<string, int> xetDayNgoac; //Kiểm tra cách xoá ngoặc này liệu đã tồn tại ?
         set<string> res;   
         del.push({s, 0});
-        int loaiBo = 0;    //lưu số phép loại bỏ ít nhất để được 1 dãy ngoặc đúng
+        int loaiBo = 0;    //đánh dấu khi 1 phép xoá các dấu ngoặc ít nhất tạo biểu thức đúng xuất hiện
         while (del.size()) {
             string tmp = del.front(); del.pop();
             if (check(tmp)) {
-                loaiBo = 1;
+                loaiBo = 1;         //xuất hiện biểu thức đúng
                 res.insert(tmp);
             }
             if (loaiBo) continue;
@@ -35,10 +34,9 @@ int main() {
                     xetDayNgoac[xoa] = 1;
                 }
             }
-            
         }
         if (!loaiBo) cout << -1;
-        else for (string s : res) cout << s << ' ';
+        else for (string x : res) cout << x << ' ';
         cout << '\n';
     }
     return 0;
