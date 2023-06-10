@@ -5,7 +5,7 @@ int cnt, flag; //cnt là số số hạng trong cách phân tích hiện tại
 void phanTich(int a[]) {
     int i = cnt;
     while (i > 0 && a[i] == 1) i--; //Tìm vị trí i có a[i] > 1 để giảm và phân tích tiếp
-    if (!i) { //Cấu hình cuối gồm toàn 1
+    if (!i) { //Cấu hình cuối gồm toàn số 1
         flag = 1;
         return;
     }
