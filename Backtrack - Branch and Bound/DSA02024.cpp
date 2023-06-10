@@ -1,33 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n, a[21], s[21];
+int n, a[21];
+vector<int> save;
 vector<string> res;
 void result() {
-    int check = INT_MIN, cnt = 0;
     string tmp = "";
-    for (int i = 0; i < n; i++) {
-        if (s[i]) {
-            cnt++;
-            if (a[i] > check) {
-                check = a[i];
-                tmp += to_string(a[i]) + ' ';
-            }
-            else return;
-        }
-    }
-    if (cnt >= 2)
-        res.push_back(tmp);
+    for (int x : save) tmp += to_string(x) + ' ';
+    res.push_back(tmp);
 }
 void Try (int i) {
-    for (int j = 0; j <= 1; j++) {
-        s[i] = j;
-        if (i == n - 1) result();
-        else Try(i + 1);
+    for (int j = i + 1; j <= n; j++) {
+        if (a[j] > a[i]) {
+            save.push_back(a[j]);
+            if (save.size() > 1) result();
+            Try(j);
+            save.pop_back();
+        }
     }
 }
 int main() {
     cin >> n;
-    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 1; i <= n; i++) cin >> a[i];
     Try(0);
     sort(res.begin(), res.end());
     for (string x : res) cout << x << endl;
