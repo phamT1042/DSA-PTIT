@@ -1,24 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n, k, a[8][8], visited[8][8], go[65];
-int dx[4] = {1, 0, 0, -1};
+int n, k, a[8][8], visited[8][8];
+char kiTu[4] = {'D', 'R', 'L', 'U'};
+int dx[4] = {1, 0, 0, -1};    //D,R,L,U
 int dy[4] = {0, 1, -1, 0};
+string tmp;
 vector<string> res;
-void result() {
-    string s = "";
-    for (int i = 0; i < k; i++) {
-        switch(go[i]) {
-            case 0: s += "D"; break;
-            case 1: s += "R"; break;
-            case 2: s += "L"; break;
-            case 3: s += "U"; break;
-        }
-    }
-    res.push_back(s);
-}
 void Try (int i, int j) {
     if (i == n - 1 && j == n - 1) {
-        result();
+        res.push_back(tmp);
         return;
     }
     for (int l = 0; l < 4; l++) {
@@ -26,11 +16,10 @@ void Try (int i, int j) {
         int j1 = j + dy[l];
         if (i1 < n && i1 >= 0 && j1 < n && j1 >= 0 && a[i1][j1] && !visited[i1][j1]) {
             visited[i1][j1] = 1;
-            go[k] = l;
-            k++;
+            tmp += kiTu[l];
             Try (i1, j1);
             visited[i1][j1] = 0;
-            k--;
+            tmp.pop_back();
         }
     }
 }
@@ -42,7 +31,7 @@ int main() {
             for (int j = 0; j < n; j++) 
                 cin >> a[i][j];
         if (a[0][0] && a[n - 1][n - 1]) {
-            k = 0;
+            tmp = "";
             visited[0][0] = 1;
             Try(0, 0);
             if (res.empty()) cout << -1;
