@@ -11,8 +11,7 @@ int main() {
         if (!i) 
             for (i = k; i <= n; i++) cout << i << ' ';
         else {
-            for (i; i >= 1; i--) 
-                if (a[i] - 1 != a[i - 1]) break; 
+            while (a[i] - 1 == a[i - 1]) i--;
             a[i]--;
             while (i <= k) {
                 ++i;
