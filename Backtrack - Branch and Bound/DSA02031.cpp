@@ -1,43 +1,42 @@
 #include<bits/stdc++.h>
 using namespace std;
-int a[10], n;
-bool used[10];
+char a[9], c; int n;
+bool used[9];
 bool check() {
     if (n < 5) {
-        int i;
-        for (i = 1; i <= n; i++) if (a[i] == 1) break;
-        if (i == 1 || i == n) return true;
-        else return false;
+        if (a[1] == 'A' || a[n] == 'A') return true;
+        return false;
     }
     else {
         int checkE, checkA;
         for (int i = 1; i <= n; i++) {
-            if (a[i] == 1) checkA = i;
-            if (a[i] == 5) checkE = i;
+            if (a[i] == 'A') checkA = i;
+            if (a[i] == 'E') checkE = i;
         }
-        if ((checkA == 1 && checkE == n) || (checkA == n && checkE == 1) || (checkE == checkA + 1) || (checkE == checkA - 1)) return true;
-        else return false;
+        int check = abs(checkA - checkE);
+        if (check == 1 || check == n - 1) return true;
+        return false;
     }
 }
 void result() {
     if (check()) {
-        for (int i = 1; i <= n; i++) cout << (char) (a[i] + 64);
-        cout << endl;
+        for (int i = 1; i <= n; i++) cout << a[i];
+        cout << '\n';
     }
 }
 void Try (int i) {
-    for (int j = 1; j <= n; j++) {
-        if (!used[j]) {
+    for (int j = 'A'; j <= c; j++) {
+        if (!used[j - 'A']) {
             a[i] = j;
-            used[j] = true;
+            used[j - 'A'] = true;
             if (i == n) result();
             else Try(i + 1);
-            used[j] = false;
+            used[j - 'A'] = false;
         }
     }
 }
 int main() {
-    char c; cin >> c;
+    cin >> c;
     n = c - 'A' + 1;
     Try(1);
 }
