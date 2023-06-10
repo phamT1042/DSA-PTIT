@@ -11,8 +11,8 @@ void sinh() {
     s += ")";
     res.push_back(s);
     int i = ssh;
-    while (i >= 1 && sh[i] == 1) i--;
-    if (i == 0) {
+    while (sh[i] == 1) i--;
+    if (!i) {
         flag = 1;
         return;
     }
@@ -22,14 +22,10 @@ void sinh() {
     ssh = i;
     int q = number_of_digit_1 / sh[i];
     int r = number_of_digit_1 % sh[i];
-    while (q--) {
-        ssh++;
-        sh[ssh] = sh[i];
-    }
-    if (r) {
-        ssh++;
-        sh[ssh] = r;
-    }
+    while (q--) 
+        sh[++ssh] = sh[i];
+    if (r) 
+        sh[++ssh] = r;
 }
 int main() {
     int t; cin >> t;
@@ -37,9 +33,8 @@ int main() {
         cin >> n;
         ssh = 1, flag = 0;
         sh[1] = n;
-        while (!flag) {
+        while (!flag) 
             sinh();
-        }
         cout << res.size() << endl;
         for (string x : res) cout << x << ' ';
         cout << endl;
