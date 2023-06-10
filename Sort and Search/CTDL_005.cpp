@@ -3,21 +3,17 @@ using namespace std;
 struct Node {
     int data;
     Node *next;
+    Node (int x) {
+        data = x; next = NULL;
+    }
 };
-Node *makeNode (int x) {
-    Node *tmp = new Node();
-    tmp->data = x;
-    tmp->next = NULL;
-    return tmp;
-}
 void insertLast (Node *&first, int x) {
-    Node *newNode = makeNode(x);
+    Node *newNode = new Node(x);
     if (first == NULL) first = newNode;
     else {
         Node *p = first;
-        while (p->next != NULL) {
+        while (p->next != NULL) 
             p = p->next;
-        }
         p->next = newNode;
     }
 }
@@ -64,6 +60,6 @@ int main() {
     }
     cin >> x;
     deleteX(first, x);
-    in (first);
+    in(first);
     return 0;
 }
