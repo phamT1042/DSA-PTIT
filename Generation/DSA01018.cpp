@@ -3,21 +3,24 @@ using namespace std;
 int main() {
     int t; cin >> t;
     while(t--) {
-        int n, k; cin >> n >> k;
-        int a[k + 1]; a[0] = 0;
-        for (int i = 1; i <= k; i++) cin >> a[i];
-        int j = k;
-        while(a[j - 1] + 1 == a[j] && j >= 1) j--;
-        if (j == 0) {
-            for (int i = n - k + 1; i <= n; i++)
-                cout << i << ' ';
-        }
+        int n, k, i; cin >> n >> k;
+        int a[k + 1]; a[0] = n + 1;
+        for (i = 1; i <= k; i++) cin >> a[i];
+        i = k;
+        while (a[i] == i) i--;
+        if (!i) 
+            for (i = k; i <= n; i++) cout << i << ' ';
         else {
-            a[j]--;
-            for (int i = j + 1; i <= k; i++) a[i] = n - k + i; 
-            for (int i = 1; i <= k; i++) cout << a[i] << ' ';
+            for (i; i >= 1; i--) 
+                if (a[i] - 1 != a[i - 1]) break; 
+            a[i]--;
+            while (i <= k) {
+                ++i;
+                if (a[i] < n - k + i) a[i]++;
+            }
+            for (i = 1; i <= k; i++) cout << a[i] << ' ';
         }
-        cout << endl;
+        cout << '\n';
     }
     return 0;
 }
