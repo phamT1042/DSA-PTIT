@@ -2,13 +2,9 @@
 using namespace std;
 int n, sh[15], k;
 void result(int a[]) {
-    string s = "";
-    for (int i = 1; i < k; i++) {
-        if (a[sh[i] - 1] > a[sh[i + 1] - 1]) return;
-        s += to_string(a[sh[i] - 1]) + ' '; 
-    }
-    s += to_string(a[sh[k] - 1]);
-    cout << s << endl;
+    for (int i = 1; i <= k; i++) 
+        cout << a[sh[i] - 1] << ' ';
+    cout << '\n';
 }
 void Try (int i, int a[]) {
     for (int j = sh[i - 1] + 1; j <= n - k + i; j++) {
