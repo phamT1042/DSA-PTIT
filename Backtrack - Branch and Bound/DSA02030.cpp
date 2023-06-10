@@ -1,24 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
-int a[15];
-int n, k;
+char c; int k;
+char a[27];
 void result() {
-    for (int i = 1; i <= k; i++) {
-        cout << (char) (a[i] + 65);
-    }
-    cout << endl;
+    for (int i = 1; i <= k; i++) cout << a[i];
+    cout << '\n';
 }
 void Try (int i) {
-    for (int j = a[i - 1]; j <= n; j++) {
+    for (char j = a[i - 1]; j <= c; j++) {
         a[i] = j;
         if (i == k) result();
         else Try(i + 1);
     }
 }
 int main() {
-    char c;
     cin >> c >> k;
-    n = c - 'A';
-    memset(a, 0, sizeof(a));
+    a[0] = 'A';
     Try(1);
+    return 0;
 }
