@@ -8,13 +8,13 @@ void result() {
     int sum = 0;
     for (int i = 1; i <= n; i++) {
         sum += a[i][sh[i]];
+        if (sum > k) return;
     }
     if (sum == k) {
         cnt++;
         vector<int> child;
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) 
             child.push_back(sh[i]);
-        }
         res.push_back(child);
     }
 }
@@ -31,18 +31,14 @@ void Try (int i) {
 }
 int main() {
     cin >> n >> k;
-    for (int i = 1; i <= n; i++) {
-        used[i] = false;
-        for (int j = 1; j <= n; j++) {
+    for (int i = 1; i <= n; i++) 
+        for (int j = 1; j <= n; j++) 
             cin >> a[i][j];
-        }
-    }
     Try(1);
     cout << cnt << endl;
     for (vector<int> a : res) {
-        for (int x : a) {
+        for (int x : a) 
             cout << x << ' ';
-        }
-        cout << endl;
+        cout << '\n';
     }
 }
