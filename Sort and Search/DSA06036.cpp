@@ -17,6 +17,7 @@ int main() {
                     break;
                 }
             }
+            if (flag) break;
         }
         if (flag) cout << "YES\n";
         else cout << "NO\n";
