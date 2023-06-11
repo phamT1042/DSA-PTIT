@@ -5,17 +5,17 @@ int main() {
     while (t--) {
         int k; cin >> k;
         string s; cin >> s;
-        map<char, int> dem;
+        unordered_map<char, int> dem;
         for (char x : s) dem[x]++;
         priority_queue<int> q;
         for (auto it : dem) q.push(it.second);
-        while (k > 0 && q.top() != 0) {
+        while (k > 0 && q.top() > 0) {
             q.push(q.top() - 1);
             q.pop();
             k--;
         }
         long long res = 0;
-        while (!q.empty()) {
+        while (q.size()) {
             res += q.top() * q.top();
             q.pop();
         }
