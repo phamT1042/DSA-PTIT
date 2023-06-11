@@ -9,7 +9,7 @@ int main() {
         sort(a, a + n);
         int res = INT_MAX;
         for (int i = 0; i < n - 1; i++) {
-            res = min (res, abs(a[i] - a[i + 1]));
+            res = min (res, a[i + 1] - a[i]);
         }
         cout << res << endl;
 	} 
