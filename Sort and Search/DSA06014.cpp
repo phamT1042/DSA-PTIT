@@ -19,7 +19,7 @@ int main() {
 	while (t--) {
 		int n; cin >> n;
         int flag = 0, i = 2;
-        for (i; i < n - 1; i++) {
+        for (i; i <= n / 2; i++) {
             if (sang[i] && sang[n - i]) {
                 flag = 1;
                 break;
