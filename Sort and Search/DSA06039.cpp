@@ -4,7 +4,8 @@ int main() {
 	int t; cin >> t;
 	while (t--) {
         int n, k; cin >> n;
-        int a[n]; map<int, int> cnt;
+        int a[n]; 
+        unordered_map<int, int> cnt;
         for (int &x : a) {
             cin >> x;
             cnt[x]++;
@@ -13,7 +14,7 @@ int main() {
         for (int i = 0; i < n; i++) {
             if (cnt[a[i]] > 1) {
                 flag = 1;
-                cout << a[i] << endl;
+                cout << a[i] << '\n';
                 break;
             }
         }
