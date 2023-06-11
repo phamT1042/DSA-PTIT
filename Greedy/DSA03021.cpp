@@ -13,7 +13,7 @@ bool check (int k, int a[], int n) {
                 break;
             }
         }
-        if (flag) b[i] = h;
+        if (flag) b[i] = h;   //b[i]min = hmin
         else return false;
     }
     return true;
@@ -24,7 +24,7 @@ int main() {
     for (int &x : a) cin >> x;
     int Min = *min_element(a, a + n);
     for (int k = Min; k >= 1; k--) { //chạy k là các giá trị thương có thể có
-                                    //có của b[i]/a[i] = b[i+1]/a[i+1] = ... = k
+                                    //có của a[i]/b[i] = a[i+1]/b[i+1] = ... = k
         if (check(k, a, n)) {
             sum = 0;
             for (int i = 0; i < n; i++) sum += b[i];
