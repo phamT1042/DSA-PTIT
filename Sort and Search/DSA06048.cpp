@@ -19,8 +19,8 @@ int main() {
             check[i] = a[i];
         }
         sort(check, check + n);
-        int pos = binarySearch(0, n - 1, a[0], check);
-        cout << (n - pos) % n << endl;
+        int pos = binarySearch(0, n - 1, a[n - 1], check);
+        cout << n - 1 - pos << endl;
 	} 
 	return 0;
 }
