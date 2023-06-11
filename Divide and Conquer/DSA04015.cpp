@@ -1,29 +1,33 @@
 #include<bits/stdc++.h>
 using namespace std;
-int found;
-int binarySearch (long long a[], int l, int r, long long x) {
-    if (l <= r) {
+int binarySearch (vector<long long> a, int l, int r, long long x) {
+    while (l <= r) {
         int m = (l + r) / 2;
-        if (a[m] > x) return binarySearch(a, l, m - 1, x);
-        if (a[m] <= x) {
-            found = m;
-            if (a[m] == x) return m;
-            if (m + 1 <= r)
-                return binarySearch(a, m + 1, r, x);
-        }
+        if (a[m] == x) return m;
+        if (a[m] > x) r = m - 1;
+        else l = m + 1;
     }
-    return found;
+    return -1;
 }
 int main() {
     int t; cin >> t;
     while (t--) {
-        int n; long long x; cin >> n >> x;
-        long long a[n];
-        found = -1;
-        for (long long &y : a) cin >> y;
-        int endFind = binarySearch(a, 0, n - 1, x);
-        if (endFind == -1) cout << "-1";
-        else cout << endFind + 1;
-        cout << endl;
+        int n; long long x, y; cin >> n >> x;
+        vector<long long> a;
+        int pos = 0;
+        for (int i = 0; i < n; i++) {
+            cin >> y;
+            if (y == x) pos = i + 1;
+            else a.push_back(y);
+        }
+        if (pos) cout << pos;
+        else {
+            a.push_back(x);
+            sort(a.begin(), a.end());
+            int pos = binarySearch (a, 0, n, x);
+            if (!pos) cout << -1;
+            else cout << pos;
+        }
+        cout << '\n';
     }
 }
