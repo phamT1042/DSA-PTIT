@@ -4,21 +4,21 @@ int main() {
     int t; cin >> t;
     while (t--) {
         int n, k; cin >> n >> k;
-        multiset<int> check;
         int a[n];
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-            if (i < k) {
-                check.insert(a[i]);
-            }
+        for (int &x : a) cin >> x;
+        deque<int> q;
+        for (int i = 0; i < k; i++) {
+            while (q.size() && a[i] > a[q.back()]) q.pop_back();
+            q.push_back(i);
         }
-        cout << *check.rbegin() << ' ';
+        cout << a[q.front()] << ' ';
         for (int i = k; i < n; i++) {
-            check.insert(a[i]);
-            check.erase(check.find(a[i - k]));
-            cout << *check.rbegin() << ' ';
+            if (q.front() <= i - k) q.pop_front();
+            while (q.size() && a[i] > a[q.back()]) q.pop_back();
+            q.push_back(i);
+            cout << a[q.front()] << ' ';
         }
-        cout << endl;
+        cout << '\n';
     }
 	return 0;
 }
