@@ -4,7 +4,7 @@ int main() {
 	int t; cin >> t;
 	while (t--) {
         int n, x; cin >> n;
-        map<int, int> cnt;
+        unordered_map<int, int> cnt;
         for (int i = 0; i < n; i++) {
             cin >> x;
             cnt[x]++;
@@ -16,9 +16,8 @@ int main() {
                 break;
             }
         }
-        if (!res) cout << "NO";
-        else cout << res;
-        cout << endl;
+        if (!res) cout << "NO\n";
+        else cout << res << endl;
 	}
 	return 0;
 }
