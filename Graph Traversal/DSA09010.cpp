@@ -2,12 +2,10 @@
 using namespace std;
 vector<int> ke[1001], reverse_ke[1001];
 int visited[1001];
-stack<int> S;
 void DFS (int u) {
     visited[u] = 1;
     for (int x : ke[u]) {
         if (!visited[x]) DFS(x);
-        S.push(x);
     }
 }
 void DFS_reverse (int u) {
@@ -17,20 +15,14 @@ void DFS_reverse (int u) {
     }
 }
 string Kosaraju (int v) {
-    for (int i = 1; i <= v; i++) {
-        if (!visited[i]) DFS(i);
-    }
+    DFS(1);
+    for (int i = 1; i <= v; i++) 
+        if (!visited[i]) return "NO";
     memset(visited, 0, sizeof(visited));
-    int tplt = 0;
-    while (!S.empty()) {
-        int tmp = S.top(); S.pop();
-        if (!visited[tmp]) {
-            tplt++;
-            DFS_reverse(tmp);
-        }
-    }
-    if (tplt == 1) return "YES";
-    return "NO";
+    DFS_reverse(1);
+    for (int i = 1; i <= v; i++) 
+        if (!visited[i]) return "NO";
+    return "YES";
 }
 int main() {
     int T; cin >> T;
