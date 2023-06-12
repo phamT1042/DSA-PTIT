@@ -1,23 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
-//Đồ thị n đỉnh là cây nếu có tồn tại n - 1 cạnh và không chứa chu trình
+//Đồ thị n đỉnh là cây nếu có tồn tại n - 1 cạnh và liên thông
 vector<int> ke[1001];
 int visited[1001];
-bool DFS_check_cycle (int u, int parent_u) {
+void DFS (int u) {
     visited[u] = 1;
-    for (int v : ke[u]) {
-        if (!visited[v]) {
-            if (DFS_check_cycle(v, u)) return true;
-        }
-        else if (v != parent_u) return true;
-    }
-    return false;
+    for (int v : ke[u])
+        if (!visited[v]) DFS(v);
 }
 string check (int n) {
-    for (int i = 1; i <= n; i++) {
-        if (!visited[i])
-            if (DFS_check_cycle(i, 0)) return "NO";
-    }
+    for (int i = 1; i <= n; i++) 
+        if (!visited[i]) return "NO";
     return "YES";
 }
 int main() {
@@ -29,6 +22,7 @@ int main() {
             ke[x].push_back(y);
             ke[y].push_back(x);
         }
+        DFS(1);
         cout << check(n) << endl;
         for (int i = 1; i <= n; i++) ke[i].clear();
         memset(visited, 0, sizeof(visited));
