@@ -12,9 +12,9 @@ void sangNT() {
 }
 int solve(string s, string t) {
     queue<pair<string, int>> q;
-    set<string> check;
+    unordered_map<string, int> check;
     q.push({s, 0});
-    check.insert(s);
+    check[s] = 1;
     int j;
     while (!q.empty()) {
         auto tmp = q.front(); q.pop();
@@ -28,8 +28,8 @@ int solve(string s, string t) {
                     if (i < 3) testStr += s1.substr(i + 1, 3 - i);
                     if (testStr == t) return tmp.second + 1;
                     else {
-                        if (sang[stoi(testStr)] && check.find(testStr) == check.end()) {
-                            check.insert(testStr);
+                        if (sang[stoi(testStr)] && !check[testStr]) {
+                            check[testStr] = 1;
                             q.push({testStr, tmp.second + 1});
                         }
                     }
