@@ -10,7 +10,7 @@ int main() {
         stack<long long> st;
         st.push(0);
         for (int i = 1; i < n; i++) {
-            while (a[i] <= a[st.top()]) {
+            while (a[i] < a[st.top()]) {
                 int idx = st.top(); st.pop();
                 if (st.empty()) {
                     if (i >= a[idx]) dmax = max(dmax, a[idx]);
