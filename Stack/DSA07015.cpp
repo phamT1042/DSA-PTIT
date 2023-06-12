@@ -14,16 +14,14 @@ int main() {
         for (int i = 0; i < s.length(); i++) {
             if (s[i] >= '0' && s[i] <= '9') {
                 string number = "";
-                while (s[i] >= '0' && s[i] <= '9') {
-                    number += s[i++];
-                }
+                while (s[i] >= '0' && s[i] <= '9') number += s[i++];
                 i--;
                 bt.push_back(number);
             }
             else bt.push_back(string(1, s[i]));
         }
         bt.push_back(")");
-        //Chuyển biểu thức trung tố sang hậu tố rồi biểu thức hậu tố
+        //Chuyển biểu thức trung tố sang hậu tố 
         stack<string> change;
         vector<string> hauTo;
         string tmp;
@@ -34,7 +32,7 @@ int main() {
                     tmp = change.top();
                     change.pop();
                     if (tmp == "(") break;
-                    else hauTo.push_back(tmp);
+                    hauTo.push_back(tmp);
                 }
             }
             else {
@@ -55,6 +53,7 @@ int main() {
             hauTo.push_back(change.top());
             change.pop();
         }
+        //Tính biểu thức hậu tố
         stack<long long> tinhHauTo;
         for (string x : hauTo) {
             if (x[0] >= '0' && x[0] <= '9') 
