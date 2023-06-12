@@ -27,8 +27,8 @@ public class DSA07008 {
                         else System.out.print(st.pop());
                     }
                 }
-                else {
-                    int kiTu = uuTien(now); //Nếu là các toán hạng và toán tử
+                else {     //Nếu là các toán hạng và toán tử
+                    int kiTu = uuTien(now); 
                     if (kiTu == 0) System.out.print(now); //Nếu là toán hạng thì in ra
                     else { //Nếu là toán tử
                         //Chừng nào ở đỉnh stack là toán tử và toán tử đó có độ ưu tiên >= toán tử hiện tại
@@ -42,7 +42,7 @@ public class DSA07008 {
                     }
                 }
             }
-            //push nốt các toán tử còn lại trong stack
+            //pop nốt các toán tử còn lại trong stack
             while (!st.empty()) System.out.print(st.pop());
             System.out.print('\n');
         }
