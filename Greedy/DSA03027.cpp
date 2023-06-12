@@ -5,7 +5,7 @@ int main() {
     long long a[n], res = 0;
     for (long long &x : a) {
         cin >> x;
-        res += x + abs(x);
+        if (x > 0) res += 2 * x;
     }
     cout << res;
 }
