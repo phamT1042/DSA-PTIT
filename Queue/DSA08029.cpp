@@ -1,43 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Matrix {
-    private:
-        int a[2][3];
-    public:
-        friend istream &operator >> (istream &in, Matrix &x) {
-            for (int i = 0; i < 2; i++) 
-                for (int j = 0; j < 3; j++)
-                    in >> x.a[i][j];
-            return in;
-        }
-        friend bool operator == (Matrix x, Matrix y) {
-            for (int i = 0; i < 2; i++) 
-                for (int j = 0; j < 3; j++)
-                    if (x.a[i][j] != y.a[i][j]) return false;
-            return true;
-        }
-        void xoayTrai () {
-            swap(this->a[0][0], this->a[0][1]);
-            swap(this->a[0][0], this->a[1][0]);
-            swap(this->a[1][0], this->a[1][1]);
-        }
-        void xoayPhai () {
-            swap(this->a[0][1], this->a[0][2]);
-            swap(this->a[0][1], this->a[1][1]);
-            swap(this->a[1][1], this->a[1][2]);
-        }
-};
-int solve (Matrix start, Matrix end) {
-    queue<pair<Matrix, int>> q;
+string xoayTrai (string s) {
+    string tmp = s;
+    swap(tmp[0], tmp[3]);
+    swap(tmp[3], tmp[4]);
+    swap(tmp[4], tmp[1]);
+    return tmp;
+}
+string xoayPhai (string s) {
+    string tmp = s;
+    swap(tmp[1], tmp[4]);
+    swap(tmp[4], tmp[5]);
+    swap(tmp[5], tmp[2]);
+    return tmp;
+}
+int solve (string start, string end) {
+    queue<pair<string, int>> q;
     q.push({start, 0});
+    string tmp;
     while (!q.empty()) {
         auto it = q.front(); q.pop();
-        Matrix tmp = it.first;
-        tmp.xoayTrai();
+        tmp = xoayTrai(it.first);
         if (tmp == end) return it.second + 1;
         else q.push({tmp, it.second + 1});
-        tmp = it.first;
-        tmp.xoayPhai();
+        tmp = xoayPhai(it.first);
         if (tmp == end) return it.second + 1;
         else q.push({tmp, it.second + 1});
     }
@@ -46,8 +32,16 @@ int solve (Matrix start, Matrix end) {
 int main () {
     int t; cin >> t;
     while (t--) {
-        Matrix start, end;
-        cin >> start >> end;
+        string start, end;
+        char add;
+        for (int i = 0; i < 6; i++) {
+            cin >> add;
+            start += add;
+        }
+        for (int i = 0; i < 6; i++) {
+            cin >> add;
+            end += add;
+        }
         if (start == end) cout << 0;
         cout << solve (start, end);
         cout << "\n";
