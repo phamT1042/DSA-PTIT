@@ -11,14 +11,11 @@ int main() {
         for (int &x : a) cin >> x;
         s.push(0);
         for (int i = 1; i < n; i++) {
-            if (a[i] <= a[s.top()]) s.push(i);
-            else {
-                while (s.size() && a[s.top()] < a[i]) {
-                    b[s.top()] = i;
-                    s.pop();
-                }
-                s.push(i);
-            }        
+            while (s.size() && a[s.top()] < a[i]) {
+                b[s.top()] = i;
+                s.pop();
+            }
+            s.push(i);    
         }
         while (s.size()) {
             b[s.top()] = -1;
@@ -26,15 +23,12 @@ int main() {
         }
         s.push(0);
         for (int i = 1; i < n; i++) {
-            if (a[i] >= a[s.top()]) s.push(i);
-            else {
-                while (s.size() && a[s.top()] > a[i]) {
-                    c[s.top()] = i;
-                    s.pop();
-                }
-                s.push(i);
-            }        
-        }
+            while (s.size() && a[s.top()] > a[i]) {
+                c[s.top()] = i;
+                s.pop();
+            }
+            s.push(i);
+        }      
         while (s.size()) {
             c[s.top()] = -1;
             s.pop();
