@@ -23,16 +23,15 @@ int BFS (pos start) {
             int x1 = x + dx[k];
             if (z1 >= 0 && z1 < a && y1 >= 0 && y1 < b && x1 >= 0 && x1 < c) {
                 if (box[z1][y1][x1] == '.') {
-                pos next;
-                next.z = z1;
-                next.y = y1;
-                next.x = x1;
-                q.push({it.first + 1, next});
-                box[z1][y1][x1] = '#';
-            }
-            else if (box[z1][y1][x1] == 'E') return 1 + it.first;
-        }
-            
+                    pos next;
+                    next.z = z1;
+                    next.y = y1;
+                    next.x = x1;
+                    q.push({it.first + 1, next});
+                    box[z1][y1][x1] = '#';
+                }
+                else if (box[z1][y1][x1] == 'E') return 1 + it.first;
+            }    
         }
     } 
     return -1;
