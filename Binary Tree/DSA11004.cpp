@@ -3,16 +3,14 @@ using namespace std;
 struct Node {
     int data;
     Node *left, *right;
+    Node (int x) {
+        data = x; 
+        left = right = NULL;
+    }
 };
-Node *makeNode (int x) {
-    Node *tmp = new Node();
-    tmp->data = x;
-    tmp->left = tmp->right = NULL;
-    return tmp;
-}
 Node *search (Node *root, int u) {
-    Node *tmp = NULL;
     if (root->data == u) return root;
+    Node *tmp = NULL;
     if (root->left != NULL)
         tmp = search(root->left, u);
     if (tmp == NULL)
@@ -36,15 +34,15 @@ int main() {
         int n; cin >> n;
         int u, v; char x;
         cin >> u >> v >> x;
-        Node *root = makeNode(u);
-        if (x == 'R') root->right = makeNode(v);
-        else root->left = makeNode(v);
+        Node *root = new Node(u);
+        if (x == 'R') root->right = new Node(v);
+        else root->left = new Node(v);
         n--;
         while(n--) {
             cin >> u >> v >> x;
             Node *p = search(root, u);
-            if (x == 'R') p->right = makeNode(v);
-            else p->left = makeNode(v);
+            if (x == 'R') p->right = new Node(v);
+            else p->left = new Node(v);
         }
         levelOrder(root);
         cout << '\n';
