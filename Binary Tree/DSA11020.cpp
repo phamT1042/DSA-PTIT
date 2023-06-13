@@ -5,12 +5,10 @@ int main() {
     while (t--) {
         int n, flag = 1; cin >> n;
         int a[n];
-        for (int &x : a) cin >> x;
+        cin >> a[0];
         for (int i = 1; i < n; i++) {
-            if (a[i - 1] >= a[i]) {
-                flag = 0;
-                break;
-            }
+            cin >> a[i];
+            if (a[i] <= a[i - 1]) flag = 0;
         }
         cout << flag << '\n';
     }
